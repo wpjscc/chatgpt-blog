@@ -141,7 +141,10 @@
 				return '';
 			}
 		}
-		document.addEventListener('alpine:init', () => {
+		document.addEventListener('alpine:init',  () => {
+
+			
+
 			Alpine.store('code', {
 				code: '',
 				on: false,
@@ -150,6 +153,7 @@
 					this.on = ! this.on
 				}
 			})
+
 			Alpine.data('data', () => {
 				const data = {
 					messages: [],
@@ -162,7 +166,7 @@
 				if (q) {
 					data.message = decodeURIComponent(q)
 				}
-				resumeLocalMessages(data)
+				// resumeLocalMessages(data)
 				return data
 			})
 		})
@@ -171,6 +175,16 @@
 
 		function send(data, $nextTick) {
 			if ($nextTick) {
+				var slug = getQueryVariable('slug');
+				fetch('/api/blogs?slug='+slug).then(response => response.json())
+ 	 			.then(res => {
+					data.messages = JSON.parse(JSON.stringify(res.data)) 
+					console.log(data)
+					$nextTick(()=>{
+						autoScroll()
+						highlightElement()
+					})
+				});
 				$nextTick(()=>{
 					autoScroll()
 					highlightElement()
@@ -194,9 +208,14 @@
 			}, 0);
 
 			var token = getQueryVariable('token');
+			var slug = getQueryVariable('slug');
 			var url = `/chatgpt?query=${encodeURIComponent(data.message)}`;
 			if (token) {
 				url = url + `&token=`+ token
+			} 
+
+			if (slug) {
+				url = url + `&slug=`+ slug
 			}  
 
 			var eventSource = new EventSource(url);
@@ -281,12 +300,12 @@
 		}
 
 		function setLocalMessages(data) {
-			localStorage.setItem('messages', JSON.stringify(data.messages.slice(-max_message)))
+			// localStorage.setItem('messages', JSON.stringify(data.messages.slice(-max_message)))
 		}
 		
 		function resumeLocalMessages(data) {
 			if (localStorage.getItem('messages')) {
-				data.messages =  JSON.parse(localStorage.getItem('messages')).slice(-max_message)
+				// data.messages =  JSON.parse(localStorage.getItem('messages')).slice(-max_message)
 			}
 		}
 
