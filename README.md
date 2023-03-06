@@ -8,6 +8,7 @@
 * 支持生成的html代码预览(tailwindcss)
 * 可自定义token（会优先使用url上带着的token）
 * 支持代理
+* 支持保存数据库
 
 ## install
 
@@ -21,7 +22,7 @@ composer create-project wpjscc/chatgpt chatgpt dev-master
 ```
 cd chatgpt
 
-php app.php --prot=8080 --token=xxx
+php app.php --prot=8080 --token=xxx --database=user:pass@localhost/bookstore
 ```
 
 ## visit
@@ -51,10 +52,6 @@ php app.php --prot=8080 --token=xxx --proxy=127.0.0.1:7890
 
 http://127.0.0.1:8080?token=xxxxxx
 
-or
-online visit 
-
-https://chatgpt.xiaofuwu.wpjs.cc
 
 
 ## example

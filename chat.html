@@ -69,7 +69,11 @@
 				</div>
 			</div>
 		</div>
-		
+		<button x-data="{isVisible:false}" @click.prevent="window.scrollTo({ top: 0, behavior: 'smooth' });isVisible=false;" @scroll.window="isVisible = (window.scrollY > 100)" :class="{'hidden':!isVisible, 'fixed':isVisible, 'bottom-4':isVisible, 'right-4':isVisible}" class="bg-gray-500 text-white rounded-full p-3 focus:outline-none focus:shadow-outline hover:bg-gray-600 transition duration-500 ease-in-out">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+				<path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm4.293 9.293a1 1 0 1 1-1.414 1.414L10 9.414l-3.879 3.88a1 1 0 1 1-1.414-1.414l4.242-4.242a1 1 0 0 1 1.414 0l4.242 4.242z"/>
+			</svg>
+		</button>
 		<div class="bg-gray-300 p-4">
 			<input class="flex items-center h-10 w-full rounded px-3 text-sm" type="text" x-bind:placeholder="placeholder" x-model="message" @keyup.enter="send($data)" x-bind:disabled="disabled">
 		</div>
