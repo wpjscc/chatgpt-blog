@@ -13,6 +13,19 @@
 * 可自定义token（会优先使用url上带着的token）
 * 支持代理
 * 支持保存数据库
+```
+CREATE TABLE `blog` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `content` text,
+  `slug` char(11) DEFAULT NULL,
+  `is_self` tinyint(2) DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
 
 ## install
 
