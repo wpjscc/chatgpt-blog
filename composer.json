@@ -1,5 +1,5 @@
 {
-    "name": "wpjscc/chatgpt",
+    "name": "wpjscc/chatgpt-blog",
     "type": "project",
     "require": {
         "react/http": "^1.8",
