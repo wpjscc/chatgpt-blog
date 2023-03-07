@@ -65,7 +65,8 @@ function (Psr\Http\Message\ServerRequestInterface $request) use ($blog) {
             $params['slug'] = str_random(10);
             var_dump(http_build_query($params));
             return new Response(301, [
-                'Location' => '/chat-blog?'.http_build_query($params)
+                'Location' => '/chat-blog?'.http_build_query($params),
+                'Cache-Control' => 'no-cache'
             ]);
         }
         
