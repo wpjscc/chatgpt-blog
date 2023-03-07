@@ -1,4 +1,6 @@
-# 基于reactphp的chagpt web客户端
+# 基于reactphp的chagpt-blog
+
+使用chatgpt写博客，持久化返回的内容
 
 ## 特性
 
@@ -56,4 +58,11 @@ http://127.0.0.1:8080?token=xxxxxx
 
 ## example
 
-![./example.png](./example.png)
+<img width="1755" alt="image" src="https://user-images.githubusercontent.com/76907477/223346470-e49cdf41-0dbd-4ab2-b38c-2c2eec007d21.png">
+<img width="1499" alt="image" src="https://user-images.githubusercontent.com/76907477/223346528-41663c8c-b660-4cc0-858a-806fe9d0210e.png">
+
+
+## 其他
+
+如果不需要保存数据库，请移步[https://github.com/wpjscc/chatgpt](https://github.com/wpjscc/chatgpt)
+
