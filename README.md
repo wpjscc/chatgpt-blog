@@ -62,4 +62,7 @@ http://127.0.0.1:8080?token=xxxxxx
 <img width="1499" alt="image" src="https://user-images.githubusercontent.com/76907477/223346528-41663c8c-b660-4cc0-858a-806fe9d0210e.png">
 
 
-## docker
+## 其他
+
+如果不需要保存数据库，请移步[https://github.com/wpjscc/chatgpt](https://github.com/wpjscc/chatgpt)
+
