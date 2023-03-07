@@ -1,5 +1,6 @@
 # 基于reactphp的chagpt-blog
 
+使用chatgpt写博客
 
 ## 特性
 
