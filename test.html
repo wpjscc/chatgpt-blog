@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script src="/assets/tailwindcss.js"></script>
+	<script src="/assets/alpinejs.js" defer></script>
+
+
+</head>
+<body>
+    <div x-data="{message:'hello world'}" class="h-64 overflow-y-scroll" x-ref="scrollDiv" @scroll="$refs.scrollDiv.scrollTop < 200 ? $refs.buttonTop.classList.add('hidden') :  $refs.buttonTop.classList.remove('hidden')">
+        <div class="py-4">
+          <h1 class="text-xl font-bold mb-2" x-text="message">Lorem Ipsum</h1>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur viverra sed urna ac sollicitudin. Nam pharetra
+            hendrerit mattis. Sed aliquam urna vel quam laoreet, at
+            ullamcorper odio elementum. Fusce posuere elit a elit
+            pellentesque, ut fringilla nisi tristique.
+          </p>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur viverra sed urna ac sollicitudin. Nam pharetra
+            hendrerit mattis. Sed aliquam urna vel quam laoreet, at
+            ullamcorper odio elementum. Fusce posuere elit a elit
+            pellentesque, ut fringilla nisi tristique.
+          </p>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur viverra sed urna ac sollicitudin. Nam pharetra
+            hendrerit mattis. Sed aliquam urna vel quam laoreet, at
+            ullamcorper odio elementum. Fusce posuere elit a elit
+            pellentesque, ut fringilla nisi tristique.
+          </p>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur viverra sed urna ac sollicitudin. Nam pharetra
+            hendrerit mattis. Sed aliquam urna vel quam laoreet, at
+            ullamcorper odio elementum. Fusce posuere elit a elit
+            pellentesque, ut fringilla nisi tristique.
+          </p>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur viverra sed urna ac sollicitudin. Nam pharetra
+            hendrerit mattis. Sed aliquam urna vel quam laoreet, at
+            ullamcorper odio elementum. Fusce posuere elit a elit
+            pellentesque, ut fringilla nisi tristique.
+          </p>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur viverra sed urna ac sollicitudin. Nam pharetra
+            hendrerit mattis. Sed aliquam urna vel quam laoreet, at
+            ullamcorper odio elementum. Fusce posuere elit a elit
+            pellentesque, ut fringilla nisi tristique.
+          </p>
+        </div>
+        <!-- Scroll to top button -->
+        <button class="fixed bottom-10 right-4  text-white font-bold py-2 px-4 rounded hidden"  x-ref="buttonTop" @click="$refs.scrollDiv.scrollTop=0">
+            👆
+        </button>
+      </div>
+      
+      <script>
+        // Get the button element
+        // const btnScrollToTop = document.querySelector("button");
+      
+        // // Listen for scroll event on the parent container
+        // const scrollContainer = document.querySelector(".overflow-y-scroll");
+        // scrollContainer.addEventListener("scroll", () => {
+        //   // Check if user scrolled enough to show the button
+        //   if (scrollContainer.scrollTop < 200) {
+        //     btnScrollToTop.classList.add("hidden");
+        //   } else {
+        //     btnScrollToTop.classList.remove("hidden");
+        //   }
+        // });
+      
+        // // Listen for click event on the button
+        // btnScrollToTop.addEventListener("click", () => {
+        //     console.log('xx')
+        //   // Animate scrolling to the top
+        //   scrollContainer.scrollTop = 0;
+        // });
+      </script>
+</body>
+</html>
