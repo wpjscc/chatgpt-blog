@@ -28,6 +28,7 @@
 	<!-- Component Start -->
 	<div class="flex flex-col flex-grow w-full max-w-7xl bg-white shadow-xl rounded-lg overflow-hidden relative" x-data="data" x-init="send($data,$nextTick)">
 		<div class="flex flex-col flex-grow h-0 p-4 overflow-auto" id="messages"  x-ref="scrollDiv" @scroll="$refs.scrollDiv.scrollTop < 200 ? $refs.buttonTop.classList.add('hidden') :  $refs.buttonTop.classList.remove('hidden')">
+			{{template}}
 			<template x-for="msg in messages">
 				<div class="w-full">
 					<template x-if="msg.is_self">
@@ -180,16 +181,16 @@
 
 		function send(data, $nextTick) {
 			if ($nextTick) {
-				var slug = getQueryVariable('slug');
-				fetch('/api/blogs?slug='+slug).then(response => response.json())
- 	 			.then(res => {
-					data.messages = JSON.parse(JSON.stringify(res.data)) 
-					console.log(data)
-					$nextTick(()=>{
-						scrollBottom()
-						highlightElement()
-					})
-				});
+				// var slug = getQueryVariable('slug');
+				// fetch('/api/blogs?slug='+slug).then(response => response.json())
+ 	 			// .then(res => {
+				// 	data.messages = JSON.parse(JSON.stringify(res.data)) 
+				// 	console.log(data)
+				// 	$nextTick(()=>{
+				// 		scrollBottom()
+				// 		highlightElement()
+				// 	})
+				// });
 				$nextTick(()=>{
 					scrollBottom()
 					highlightElement()

@@ -4,7 +4,8 @@
     "require": {
         "react/http": "^1.8",
         "clue/http-proxy-react": "^1.8",
-        "react/mysql": "^0.6@dev"
+        "react/mysql": "^0.6@dev",
+        "erusev/parsedown": "^1.7"
     },
     "authors": [
         {

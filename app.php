@@ -69,8 +69,53 @@ function (Psr\Http\Message\ServerRequestInterface $request) use ($blog) {
                 'Cache-Control' => 'no-cache'
             ]);
         }
-        
-        return Response::html(file_get_contents(__DIR__.'/chat.html'));
+
+
+        // return Response::html(str_replace('{{template}}', '', file_get_contents(__DIR__.'/chat.html'))));
+
+        return $blog->show($slug)->then(function($command){
+            $str = '';
+            foreach($command->resultRows as &$resultRow){
+                $resultRow['is_self'] = $resultRow['is_self'] ? true : false;
+                $content = $resultRow['content'];
+                $createdAt = $resultRow['created_at'];
+                $description = $resultRow['description'];
+                if ($resultRow['is_self']) {
+                    $str .= <<<EOF
+                    <div class="w-full">
+                        <div class="flex w-full mt-2 space-x-3 ml-auto justify-end ">
+                            <div>
+                                <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg ">
+                                    <p class="text-sm">$content</p>
+                                </div>
+                                <span class="text-xs text-gray-500 leading-none">$createdAt</span>
+                            </div>
+                        </div>
+                    </div>
+                EOF;
+                } else {
+                    $content = (new Parsedown())->text($content);
+                    $str .= <<<EOF
+                    <div class="w-full">
+                        <div class="flex w-full mt-2 space-x-3 overflow-auto">
+                            <div class="w-full">
+                                <div class="p-3 rounded-r-lg rounded-bl-lg">
+                                    <div class="prose md:max-w-4xl">$content</div>
+                                </div>
+                                <span class="text-xs text-gray-500 leading-none">$createdAt</span>
+                            </div>
+                        </div>
+                    </div>
+                EOF;
+                }
+            }
+            $contents = str_replace('{{template}}', $str, file_get_contents(__DIR__.'/chat.html'));
+            $str = '';
+            return Response::html($contents);
+            
+        },function (Exception $error) {
+            echo 'Error: ' . $error->getMessage() . PHP_EOL;
+        });
     }
 
     if ($path == '/health') {
