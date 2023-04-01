@@ -71,8 +71,23 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-gray-300 p-4">
-			<input class="flex items-center h-10 w-full rounded px-3 text-sm" type="text" x-bind:placeholder="placeholder" x-model="message" @keyup.enter="send($data)" x-bind:disabled="disabled">
+		<div class="bg-gray-300 p-4 flex" x-data="{ shiftPressed: false, ctrlPressed: false }">
+			<input class="flex items-center h-10 w-full rounded px-3 text-sm block sm:hidden disabled:bg-gray-200" type="text" x-bind:placeholder="placeholder" x-model="message" @keyup.enter="send($data)" x-bind:disabled="disabled">
+			<textarea class="flex-1 border border-gray-300 rounded-lg py-2 px-4 hidden sm:block disabled:bg-gray-200" x-bind:placeholder="placeholder" 
+						@keydown.shift="shiftPressed = true"
+						@keyup.shift="shiftPressed = false" 
+						@keydown.ctrl="ctrlPressed = true"
+						@keydown.ctrl="ctrlPressed = false"
+						rows="1"
+						x-model="message"
+						x-bind:disabled="disabled"
+						@keyup.enter.prevent="
+						if (shiftPressed || ctrlPressed) {
+							
+						} else {
+							send($data, $nextTick)
+						}
+						"></textarea>
 		</div>
 		<!-- Scroll to top button -->
 		<button class="absolute bottom-20 -right-1  text-white font-bold py-2 px-4 rounded hidden"  x-ref="buttonTop" @click="$refs.scrollDiv.scrollTop=0">
