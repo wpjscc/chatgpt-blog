@@ -94,13 +94,20 @@ function (Psr\Http\Message\ServerRequestInterface $request) use ($blog) {
                     </div>
                 EOF;
                 } else {
+                    $originContent = $content;
                     $content = (new Parsedown())->text($content);
                     $str .= <<<EOF
                     <div class="w-full">
                         <div class="flex w-full mt-2 space-x-3 overflow-auto">
-                            <div class="w-full">
-                                <div class="p-3 rounded-r-lg rounded-bl-lg">
+                            <div class="">
+                                <div class="p-3 rounded-r-lg rounded-bl-lg relative" x-data="{}">
+                                    <div class="hidden" x-ref="ui">$originContent</div>
                                     <div class="prose md:max-w-4xl">$content</div>
+                                    <div class="flex justify-center items-center mx-auto py-6 absolute -right-20 -top-6" @click="\$store.edit.edit(\$refs.ui.innerHTML)">
+                                        <button class="bg-blue-200 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                                            <i class="material-icons">code</i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <span class="text-xs text-gray-500 leading-none">$createdAt</span>
                             </div>
