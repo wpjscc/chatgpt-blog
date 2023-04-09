@@ -77,7 +77,7 @@
 						@keydown.shift="shiftPressed = true"
 						@keyup.shift="shiftPressed = false" 
 						@keydown.ctrl="ctrlPressed = true"
-						@keydown.ctrl="ctrlPressed = false"
+						@keyup.ctrl="ctrlPressed = false"
 						rows="1"
 						x-model="message"
 						x-bind:disabled="disabled"
